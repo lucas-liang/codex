@@ -3,6 +3,8 @@ import user from './assets/user.svg';
 
 const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container');
+const URL = 'https://codex-lvtq.onrender.com';
+// const URL = 'http://localhost:5000';
 
 let loadInterval;
 
@@ -81,7 +83,7 @@ const handleSubmit = async (e) => {
     loader(messageDiv);
 
     // fetch data from server -> bot response
-    const response = await fetch('https://codex-lvtq.onrender.com', {
+    const response = await fetch(`${URL}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -111,7 +113,7 @@ const handleSubmit = async (e) => {
  
 form.addEventListener('submit', handleSubmit);
 form.addEventListener('keyup', (e) => {
-    if (e.keyCode === 13){
+    if (e.key === "Enter"){
         handleSubmit(e);
     }
 })
